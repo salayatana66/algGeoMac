@@ -1,8 +1,0 @@
-R = CC[x,y,z];
-f = x^4 + x^2*y^2+y^3-x^3
-fx = diff(x,f)
-fy = diff(y,f)
-I = ideal(f,fx,fy)
-J = gens gb I
--- | y2 x2 | -- hence CC[x,y]/I has basis (1,x,y,xy) so 4-dimensional;
--- x5 == y5 in mode I
