@@ -1,0 +1,4 @@
+ring r = 0,(x,y),dp;
+ideal i = y, y - x2;
+option(prot);
+groebner(i);
