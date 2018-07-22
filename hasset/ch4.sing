@@ -4,3 +4,9 @@
 ring r = 0,(x,y,a),lp;
 ideal i = x+y-a,x2+y2-a3,x3+y3-a5;
 groebner(i);
+// Example 4.10: Image of rational map
+// ((x2+1)/(x2-1),1/x)
+ring r = 0,(x,z,y_1,y_2),lp;
+ideal i = z*(x2-1)*x-1, y_1-x*(x2+1)*z,
+  y_2-(x2-1)*z;
+groebner(i);
