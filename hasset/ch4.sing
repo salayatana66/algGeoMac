@@ -1,0 +1,6 @@
+// Example => 4.9
+// common solvability of equation sistem x+y=a,x^2+y^2=a^3,x^3+y^3=a^5
+// parameter a becomes a variable in the elimination order
+ring r = 0,(x,y,a),lp;
+ideal i = x+y-a,x2+y2-a3,x3+y3-a5;
+groebner(i);
