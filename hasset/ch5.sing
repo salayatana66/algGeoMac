@@ -1,0 +1,10 @@
+// Exercise 5.2: discriminant of x4+px+q
+ring r = 0,(x,p,q),lp;
+poly f = x4 + p*x + q;
+poly df = diff(f,x);
+resultant(f,df,x);
+// Exercise 5.3: discrimant of polynomial in x,y
+ring r = 0,(x,y),lp;
+poly f = x2+2*x*y2+y+1;
+poly df = diff(f,x);
+resultant(f,df,x);

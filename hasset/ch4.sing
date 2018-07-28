@@ -10,3 +10,30 @@ ring r = 0,(x,z,y_1,y_2),lp;
 ideal i = z*(x2-1)*x-1, y_1-x*(x2+1)*z,
   y_2-(x2-1)*z;
 groebner(i);
+// Exercise 4.1: The Cardiod
+ring r = 0,(c,s,x,y),(dp(2),dp(2));
+ideal i = s2+c2-1,x-c-1/2*(c2-s2),y-s-c*s;
+groebner(i);
+// 16x4+32x2y2+16y4-24x2-24y2-16x-3
+// Exercise 4.2: another rational equation
+ring r = 0,(x_1,x_2,z,y_1,y_2),(dp(3),dp(2));
+ideal i = x_1^1+x_2^2-1, z*(1+x_2^2)-1, y_1-x_1*z, y_2-x_1*x_2*z;
+groebner(i);
+// y_1^3+y_1*y_2^2-y_1^2+y_2^2
+// Exercise 4.4 (only part 1, part 2 is similar)
+ring r = 0,(t,u,x,y),(dp(2),dp(2));
+ideal i = t3-x,u2-y,t+u-1;
+groebner(i);
+// =y3-x2+6xy-3y2+2x+3y-1
+// Exercise 4.5 => Descartes circle theorem
+ring r = 0,(x_1,x_2,x_3,x_4,y_1,y_2,y_3,y_4,r_1,r_2,r_3,r_4),
+  (dp(8),dp(4));
+ideal des = (x_1-x_2)^2+(y_1-y_2)^2-(r_1+r_2)^2,
+  (x_1-x_3)^2+(y_1-y_3)^2-(r_1+r_3)^2,
+  (x_1-x_4)^2+(y_1-y_4)^2-(r_1+r_4)^2,
+    (x_2-x_3)^2+(y_2-y_3)^2-(r_2+r_3)^2,
+    (x_2-x_4)^2+(y_2-y_4)^2-(r_2+r_4)^2,
+  (x_3-x_4)^2+(y_3-y_4)^2-(r_3+r_4)^2;
+groebner(des);
+poly f = r_1^2*r_2^2*r_3^2-2*r_1^2*r_2^2*r_3*r_4-2*r_1^2*r_2*r_3^2*r_4-2*r_1*r_2^2*r_3^2*r_4+r_1^2*r_2^2*r_4^2-2*r_1^2*r_2*r_3*r_4^2-2*r_1*r_2^2*r_3*r_4^2+r_1^2*r_3^2*r_4^2-2*r_1*r_2*r_3^2*r_4^2+r_2^2*r_3^2*r_4^2;
+
