@@ -11,3 +11,29 @@ groebner(i);
 // x(1),x(2),x(3),x(4) are algebraically independent
 // and x(5), x(6) are rational functions of the remaining
 // ones
+
+// Ex 7.12: Groebner basis techniques for
+// finding esplicit integra equations for alpha+beta and
+// alpha*beta knowing integral equations of alpha and beta
+// we use elimination order :)
+ring r = 0, (alpha,beta,a_1,a_0,b_1,b_0,gamma),
+  (dp(2),dp(4),dp(1));
+ideal i = alpha^2+a_1*alpha+a_0, beta^2+b_1*beta+b_0,
+  alpha + beta - gamma;
+groebner(i);
+
+/*
+a_1^2*b_1*gamma+a_1*a_0*b_1+a_1*b_1^2*gamma+a_0*b_1^2+a_1^2*b_0+a_1*b_1*b_0+a_1^2*gamma^2+2*a_1*a_0*gamma+a_0^2+3*a_1*b_1*gamma^2+2*a_0*b_1*gamma+b_1^2*gamma^2+2*a_1*b_0*gamma-2*a_0*b_0+2*b_1*
+b_0*gamma+b_0^2+2*a_1*gamma^3+2*a_0*gamma^2+2*b_1*gamma^3+2*b_0*gamma^2+gamma^4 
+*/
+
+ring r = 0, (alpha,beta,a_1,a_0,b_1,b_0,delta),
+  (dp(2),dp(4),dp(1));
+ideal i = alpha^2+a_1*alpha+a_0, beta^2+b_1*beta+b_0,
+  alpha*beta - delta;
+groebner(i);
+
+/*
+a_1*a_0*b_1*b_0*delta-a_0^2*b_0^2-a_0*b_1^2*delta^2-a_1^2*b_0*delta^2+a_1*b_1*delta^3+2*a_0*b_\
+0*delta^2-delta^4 
+*/
