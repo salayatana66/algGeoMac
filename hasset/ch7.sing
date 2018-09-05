@@ -1,0 +1,13 @@
+// Ex 7.7 : dimension of the determinant set
+// and ring of fractions
+// we need multiple reductions so we use lexicographic
+// order
+ring r = 0,(x(1),x(2),x(3),x(4),x(5),x(6)),lp;
+ideal i = x(1)*x(5)-x(2)*x(4), x(1)*x(6)-x(4)*x(3),
+  x(2)*x(6)-x(5)*x(3);
+groebner(i);
+
+// turns out it is a grobner basis; but then
+// x(1),x(2),x(3),x(4) are algebraically independent
+// and x(5), x(6) are rational functions of the remaining
+// ones
