@@ -1,0 +1,42 @@
+// Ex 8.1 : 
+// illustration of the intersect command
+// We then use a library to test irreducibility
+// of monomial ideals
+ring r = 0,(x,y),dp;
+ideal i1 = x^2,y;
+ideal i2 = y^2,x;
+ideal j1 = y+x, x^2;
+ideal j2 = x, (y+x)^2;
+intersect(i1,i2);
+// y2, xy, x2
+intersect(j1,j2);
+// y2, xy, x2+xy=> x2 as xy already in basis
+LIB "monomialideal.lib";
+isirreducibleMon(i1);
+// 1
+isirreducibleMon(i2);
+// 1
+// j1 & j2 are irreducible using an affine
+// change of basis
+
+// Ex 8.2 We use the technique of quotient
+// ideals to compute the indeterminacy locus
+// of the inverse of the
+// birational parametrization t -> (t^2,t^3) onto
+// C = locus of x^3-y^2=0
+// inverse given by y/x
+ring r = 0, (x,y),dp;
+// we need to take <y>:<x> in k[C]
+// we lift to k[Q]
+ideal i1 = x3-y2,x;
+ideal i2 = x3-y2,y;
+ideal j1 = x;
+ideal j2 = x3-y2;
+ideal i2j1 = intersect(i2,j1);
+ideal i2Overj1 = y,x2;
+ideal i2j2 = intersect(i2,j2);
+ideal i2Overj1 = y,x2;
+ideal i2Overj2 = 1;
+// intersection is then y,x2;
+quotient(i2,i1);
+// confirms the result so (0,0) is the indeterminacy locus
