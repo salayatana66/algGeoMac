@@ -59,3 +59,26 @@ factorize(f);
 ideal c1 = x;
 ideal c2 = y,z;
 intersect(c1,c2);
+
+// Exercise 8.6 verifications
+ring r = 0,(x,y,z),dp;
+ideal a = xyz,x2,y2,z2;
+ideal b = xy,yz,xz;
+ideal c = x,y;
+ideal d = y,z;
+ideal e = x,z;
+intersect(a,b);
+// we can intersect a & b to get the ideal
+// we want
+LIB "monomialideal.lib";
+isprimaryMon(a);
+// but b is not primary
+// but it is an intersection of these
+intersect(c,d,e);
+// which are prime
+isprimeMon(c);
+// one cannot leave one out
+// so the decomposition is
+// primary
+intersect(a,d,e);
+
