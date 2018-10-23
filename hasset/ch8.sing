@@ -40,3 +40,22 @@ ideal i2Overj2 = 1;
 // intersection is then y,x2;
 quotient(i2,i1);
 // confirms the result so (0,0) is the indeterminacy locus
+
+// Ex 8.3
+// mainly verifcations to play with singular
+LIB "monomialideal.lib";
+ring r = 0, (x,y,z),dp;
+ideal aI = x, z2;
+ideal apI = x,z;
+isprimaryMon(aI);
+// yes
+isprimeMon(apI);
+// yes
+ideal bI1 = z, y2-x2-x3;
+ideal bI2 = y,x,z2;
+intersect(bI1,bI2);
+poly f = y2-x2-x3;
+factorize(f);
+ideal c1 = x;
+ideal c2 = y,z;
+intersect(c1,c2);
