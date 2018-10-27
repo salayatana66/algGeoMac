@@ -82,3 +82,64 @@ isprimeMon(c);
 // primary
 intersect(a,d,e);
 
+// Ex 8.7
+ring R = 0,(x,y,z),dp;
+ideal I1 = x,y;
+ideal I2 = y,z;
+ideal I12 = intersect(I1,I2);
+// y, xz
+ideal a = x,y2,z;
+ideal c = x,y;
+ideal b = y,z;
+intersect(a,b,c);
+LIB "primdecint.lib";
+ideal prod = xy,y2,xz,yz;
+primdecZ(prod);
+// the decomposition we found is primary and irredundant;
+// but a has the embedded prime <x,y,z>
+
+// Ex 8.9
+//LIB "monomialideal.lib";
+ring r = 0,(x(1..4)),dp;
+ideal I = x(1)*x(4)-x(2)*x(3), x(2)^3-x(1)^2*x(3),
+  x(3)^3-x(2)*x(4)^2;
+qring Q = std(I);
+factorize(x(2));
+ideal a = x(1),x(2);
+ideal b = x(2),x(4);
+ideal c = x(2),x(1)*x(3);
+ideal d = x(2),x(3)^3;
+intersect(a,b,c,d);
+// gives x(2)
+isprimaryMon(x(1),x(2));
+// 1
+isprimaryMon(x(2),x(4));
+// 1
+isprimaryMon(x(2),x(1)*x(3));
+// 1
+isprimaryMon(x(2),x(3)^3);
+// 1
+isprimeMon(x(2),x(1)*x(3));
+isprimeMon(x(2),x(3)^3);
+
+// Ex 8.10
+// Give an example of a primary ideal in a polynomial ring
+// which is not irreducible
+
+ideal I1 = xy,x2,y2;
+// intersection of
+ideal J1 = x2,y;
+ideal J2 = x,y2;
+ideal J3 = intersect(J1,J2);
+// let's test equality I1 == J3
+reduce(J3,std(I1));
+// 0 0 0
+reduce(I1,std(J3));
+// 0 0 0
+LIB "primdecint.lib";
+primdecZ(I1);
+// shows that I1 is primary; indeed it is
+// contained in the maximal ideal <x,y>
+// and contains <x,y>^2;
+
+
